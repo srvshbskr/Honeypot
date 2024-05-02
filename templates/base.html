@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href={% static 'main.css' %}>
+  </head>
+  <body>
+    <h1>Honeypot</h1>
+
+    <form action="" method="POST" class="form">
+      {% csrf_token %} {% comment %} {% for i in form %}
+
+      <div class="row">
+        <label for="">{{i.label}}</label>
+      </div>
+
+      {% endfor %} {% endcomment %} {{form.as_p}}
+      <input type="submit" value="Submit" />
+    </form>
+    <div class="list">
+      {% for i in list %} {% if not i.hidden %}
+
+      <div class="row">
+        <h1>{{i.name}}</h1>
+      </div>
+
+      {% endif %} {% endfor %}
+    </div>
+  </body>
+</html>
